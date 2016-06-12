@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 #
 # Copyright (C) 2010-2016 PPMessage.
-# Guijin Ding, dingguijin@gmail.com
-# All rights reserved
+# Guijin Ding, dingguijin@gmail.com.
+# All rights are reserved.
 #
 # core/constant.py
-#
 #
 
 DEV_MODE = True
@@ -30,6 +29,33 @@ class Enum(set):
 
 Animals = Enum(["DOG", "CAT", "HORSE"])
 # Animals.DOG == "DOG"
+
+PP_WEB_SERVICE = Enum([
+    "META",
+    "ABSTRACT",
+    "UPLOAD",
+    "DOWNLOAD",
+    "API",
+    "PCSOCKET",
+    "PPCOM",
+    "PPKEFU",
+    "PPCONSOLE",
+    "PPAUTH",
+    "AMD",
+    "CACHE",
+    "DISPATCHER",
+    "GCMPUSH",
+    "IOSPUSH",
+    "MQTTPUSH",
+    "PPEMAIL",
+    "SEND",
+])
+
+CACHE_TYPE = Enum([
+    "CREATE",
+    "UPDATE",
+    "DELETE"
+])
 
 API_LEVEL = Enum([
     "PPCOM",
@@ -382,6 +408,9 @@ PPHOME_PORT = 8941
 PPAUTH_PORT = 8943
 PPCONSOLE_PORT = 8944
 
+# all in one backend service port
+MAIN_PORT = 8945
+
 IOS_FAKE_TOKEN = "YOU-GOT-A-FAKE-IOS-TOKEN-IN-EMULATOR"
 INVALID_IOS_TOKEN = "INVALID_IOS_TOKEN"
 
@@ -482,6 +511,8 @@ REDIS_AMD_KEY = "redis_amd_key"
 
 REDIS_PPKEFU_ONLINE_KEY = "redis_ppkefu_online_key"
 REDIS_PPCOM_ONLINE_KEY = "redis_ppcom_online_key"
+
+REDIS_CACHE_KEY = "redis_cache_key"
 
 DATETIME_FORMAT = {
     "extra": '%Y-%m-%d %H:%M:%S %f',

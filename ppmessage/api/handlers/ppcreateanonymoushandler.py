@@ -57,7 +57,7 @@ class PPCreateAnonymousHandler(BaseHandler):
         }
         
         _row = DeviceUser(**_values)
-        _row.async_add()
+        _row.async_add(self.application.redis)
         _row.create_redis_keys(self.application.redis)
 
         _data_uuid = str(uuid.uuid1())
@@ -71,7 +71,7 @@ class PPCreateAnonymousHandler(BaseHandler):
             "is_distributor_user": False,
         }
         _row = AppUserData(**_values)
-        _row.async_add()
+        _row.async_add(self.application.redis)
         _row.create_redis_keys(self.application.redis)
         
         _rdata = self.getReturnData()
@@ -96,7 +96,7 @@ class PPCreateAnonymousHandler(BaseHandler):
             _language = "zh-TW"
             _string = USER_NAME["tw"]
 
-        _ip = self.request.headers["X-Real-Ip"]
+        _ip = self.request.headers.get("X-Real-Ip") or self.request.headers.get("remote_ip")
 
         if _ip == None or _ip == "127.0.0.1" or _ip == "localhost" or "192.168." in _ip:
             return _string.get("local") + "." + _string.get("user")
