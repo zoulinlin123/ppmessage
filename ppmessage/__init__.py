@@ -19,6 +19,11 @@ PPODOO start
 2.1.0.1
 PPODOO support main
 
+2.1.0.2
+PPODOO merge with master
+support sqlite
+
 """
 
-__version__ = "2.1.0.1"
+__version__ = "2.1.0.2"
+
