@@ -52,7 +52,7 @@ class PPGetConversationUserListHandler(BaseHandler):
 
     def _Task(self):
         super(PPGetConversationUserListHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         _conversation_uuid = _request.get("conversation_uuid")
         if _conversation_uuid == None or _app_uuid == None:

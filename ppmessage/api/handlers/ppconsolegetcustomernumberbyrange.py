@@ -31,7 +31,7 @@ class PPConsoleGetCustomerNumberByRange(BaseHandler):
     assumed begin, end with %Y-%m-%d
     """
     def _get(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         _begin_date = _request.get("begin_date")
         _end_date = _request.get("end_date")

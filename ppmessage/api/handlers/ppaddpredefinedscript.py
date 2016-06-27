@@ -19,7 +19,7 @@ import logging
 class PPAddPredefinedScript(BaseHandler):
 
     def _add(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         _group_uuid = _request.get("group_uuid")
         _script_answer = _request.get("script_answer")

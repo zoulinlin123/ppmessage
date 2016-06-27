@@ -73,7 +73,7 @@ class PPLeaveAppHandler(BaseHandler):
 
     def _Task(self):
         super(PPLeaveAppHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         _user_list = _request.get("user_list")
         if _app_uuid == None or _user_list == None or len(_user_list) == 0:

@@ -19,7 +19,7 @@ import logging
 class PPRemovePredefinedScriptGroup(BaseHandler):
 
     def _remove(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _group_uuid = _request.get("group_uuid")
         if _group_uuid == None or len(_group_uuid) == 0:
             self.setErrorCode(API_ERR.NO_PARA)

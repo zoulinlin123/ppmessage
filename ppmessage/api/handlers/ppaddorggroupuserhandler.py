@@ -82,7 +82,7 @@ class PPAddOrgGroupUserHandler(BaseHandler):
     
     def _Task(self):
         super(PPAddOrgGroupUserHandler, self)._Task()
-        _body = json.loads(self.request.body)
+        _body = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _body.get("app_uuid")
         _user_list = _body.get("user_list")
         _group_uuid = _body.get("group_uuid")

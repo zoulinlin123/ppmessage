@@ -75,7 +75,7 @@ class PPUpdateOrgGroupHandler(BaseHandler):
     
     def _Task(self):
         super(PPUpdateOrgGroupHandler, self)._Task()
-        _body = json.loads(self.request.body)
+        _body = json.loads(self.request.body.decode("utf-8"))
         if "app_uuid" not in _body or "group_uuid" not in _body:
             self.setErrorCode(API_ERR.NO_PARA)
             return

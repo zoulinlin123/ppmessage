@@ -68,7 +68,7 @@ class PPGetConversationInfoHandler(BaseHandler):
 
     def _Task(self):
         super(PPGetConversationInfoHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         self._app_uuid = _request.get("app_uuid")
         self._user_uuid = _request.get("user_uuid")
         self._conv_uuid = _request.get("conversation_uuid")

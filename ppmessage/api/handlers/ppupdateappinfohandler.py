@@ -21,7 +21,7 @@ import logging
 class PPUpdateAppInfoHandler(BaseHandler):
     def _update(self, _request):
         _redis = self.application.redis
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         
         if _app_uuid == None:

@@ -47,7 +47,7 @@ class PPUpdateDeviceHandler(BaseHandler):
     
     def _Task(self):
         super(PPUpdateDeviceHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _device_uuid = _request.get("device_uuid")
         if _device_uuid == None:
             logging.error("no device_uuid.")

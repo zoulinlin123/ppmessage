@@ -93,7 +93,7 @@ class PPGetAppConversationListHandler(BaseHandler):
     
     def _Task(self):
         super(PPGetAppConversationListHandler, self)._Task()
-        _app_uuid = json.loads(self.request.body).get("app_uuid")
+        _app_uuid = json.loads(self.request.body.decode("utf-8")).get("app_uuid")
         if _app_uuid == None:
             logging.error("no app_uuid provided")
             self.setErrorCode(API_ERR.NO_PARA)

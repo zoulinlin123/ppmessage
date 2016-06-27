@@ -50,7 +50,59 @@ class PPConsoleSignupHandler(BaseHandler):
         
     def _Task(self):
         super(PPConsoleSignupHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2010-2016.
+# @author kun.zhao@ppmessage.com
+#
+# PPConsole signup
+#
+
+from ppmessage.api.handlers.basehandler import BaseHandler
+
+from ppmessage.core.constant import API_LEVEL
+from ppmessage.core.constant import USER_STATUS
+from ppmessage.core.constant import REDIS_EMAIL_KEY
+
+from ppmessage.api.error import API_ERR
+
+from ppmessage.db.models import DeviceUser
+
+from ppmessage.api.handlers.ppcreateuserhandler import create_user
+from ppmessage.api.handlers.ppcreateapphandler import create_app
+
+import datetime
+import uuid
+import json
+import logging
+
+class PPConsoleSignupHandler(BaseHandler):
+
+    def initialize(self):
+        self.addPermission(app_uuid=True)
+        self.addPermission(api_level=API_LEVEL.PPCONSOLE)
+        self.addPermission(api_level=API_LEVEL.THIRD_PARTY_CONSOLE)
+        self.addPermission(api_level=API_LEVEL.PPCONSOLE_BEFORE_LOGIN)
+        return
+
+    def _send_email(self, _user, _app):
+        _subject = "[PPMessage]: signup successfully! - %s" % _app.get("app_name")
+        _text = "Dear %s,\n Welcome to PPMessage, enjoy!.\n You do not need confirm this email, but if you lost your password, PPMessage can help you renew password and send password back to here.\n Thanks,\n PPMessage\n" % _user.get("user_fullname")
+        _html = "<html><body><p>Dear %s,</p> <br> <p>Welcome to PPMessage, enjoy!</p> <p>PPMessage need not your email confirmation, but when you lost your password, PPMessage can help you renew password and send password back to you using this email.</p> <p>Thanks,</p><p>PPMessage</p></body></html>" % _user.get("user_fullname")
+        _request = {
+            "to": [_user.get("user_email")],
+            "subject": _subject,
+            "text": _text,
+            "html": _html
+        }
+
+        logging.info(_request)
+        self.application.redis.rpush(REDIS_EMAIL_KEY, json.dumps(_request))
+        return
+        
+    def _Task(self):
+        super(PPConsoleSignupHandler, self)._Task()
+        _request = json.loads(self.request.body.decode("utf-8"))
         _user_email = _request.get("user_email")
         _user_fullname = _request.get("user_fullname")
         _user_password = _request.get("user_password")

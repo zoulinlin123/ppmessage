@@ -47,7 +47,7 @@ class PPGetOrgGroupConversationHandler(BaseHandler):
 
     def _Task(self):
         super(PPGetOrgGroupConversationHandler, self)._Task()
-        _body = json.loads(self.request.body)
+        _body = json.loads(self.request.body.decode("utf-8"))
         if "app_uuid" not in _body or \
            "group_uuid" not in _body or \
            "user_uuid" not in _body:

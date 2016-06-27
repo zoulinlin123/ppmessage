@@ -61,7 +61,7 @@ class PPGetAppOwnedByUserHandler(BaseHandler):
 
     def _Task(self):
         super(PPGetAppOwnedByUserHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _user_uuid = _request.get("user_uuid")
         if _user_uuid == None:
             self.setErrorCode(API_ERR.NO_PARA)

@@ -128,7 +128,7 @@ class PPCreateAppHandler(BaseHandler):
     def _Task(self):
         super(PPCreateAppHandler, self)._Task()
 
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _user_uuid = _request.get("user_uuid")
         _app_name = _request.get("app_name")
                 

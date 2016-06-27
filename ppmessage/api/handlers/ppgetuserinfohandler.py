@@ -50,7 +50,7 @@ class PPGetUserInfoHandler(BaseHandler):
         if _app_user_data == None:
             self.setErrorCode(API_ERR.NO_APP_USER)
             return
-        _app_user_data = json.loads(_app_user_data)        
+        _app_user_data = json.loads(_app_user_data) 
         _r = self.getReturnData()
         _r.update(_user)
         _r.update(_app_user_data)
@@ -69,7 +69,7 @@ class PPGetUserInfoHandler(BaseHandler):
 
     def _Task(self):
         super(PPGetUserInfoHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _user_uuid = _request.get("user_uuid")
         _app_uuid = _request.get("app_uuid")
         

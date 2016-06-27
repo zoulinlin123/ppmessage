@@ -90,6 +90,6 @@ class SetDeviceInfoHandler(BaseHandler):
         
     def _Task(self):
         super(SetDeviceInfoHandler, self)._Task()
-        self._post(json.loads(self.request.body))
+        self._post(json.loads(self.request.body.decode("utf-8")))
     
 

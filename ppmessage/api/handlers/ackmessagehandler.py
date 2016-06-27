@@ -51,7 +51,7 @@ class AckMessageHandler(BaseHandler):
             
     def _Task(self):
         super(AckMessageHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _list = _request.get("list")
 
         if not isinstance(_list, list):

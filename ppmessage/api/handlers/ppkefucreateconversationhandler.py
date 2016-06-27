@@ -254,7 +254,7 @@ class PPKefuCreateConversationHandler(BaseHandler):
     
     def _Task(self):
         super(PPKefuCreateConversationHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
 
         _app_uuid = _request.get("app_uuid")
         _user_uuid = _request.get("user_uuid")

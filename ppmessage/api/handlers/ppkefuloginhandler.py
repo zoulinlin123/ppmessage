@@ -262,7 +262,7 @@ class PPKefuLoginHandler(BaseHandler):
         return True
     
     def _check_input(self):
-        self.input_data = json.loads(self.request.body)
+        self.input_data = json.loads(self.request.body.decode("utf-8"))
 
         self._terminal_uuid = self.input_data.get("terminal")
         if not self._parameter(self._terminal_uuid):

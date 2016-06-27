@@ -108,7 +108,7 @@ class PPKefuLogoutHandler(BaseHandler):
     
     def _Task(self):    
         super(PPKefuLogoutHandler, self)._Task()
-        _input = json.loads(self.request.body)
+        _input = json.loads(self.request.body.decode("utf-8"))
 
         _app_uuid = _input.get("app_uuid")
         _user_uuid = _input.get("user_uuid")

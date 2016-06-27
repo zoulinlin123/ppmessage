@@ -17,7 +17,7 @@ import logging
 class PPMovePredefinedScriptIntoGroup(BaseHandler):
 
     def _move(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _group_uuid = str(_request.get("group_uuid"))
         _script_uuid = _request.get("script_uuid")
         if _script_uuid == None or len(_script_uuid) == 0:

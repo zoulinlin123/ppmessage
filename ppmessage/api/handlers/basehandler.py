@@ -217,7 +217,7 @@ class BaseHandler(RequestHandler):
         _content_type = self.request.headers.get("Content-Type")
         if _content_type and ("application/json" in _content_type.lower()):
             try:
-                self.request_body = json.loads(self.request.body)
+                self.request_body = json.loads(self.request.body.decode("utf-8"))
             except:
                 logging.info("api request data not json")
                 return False

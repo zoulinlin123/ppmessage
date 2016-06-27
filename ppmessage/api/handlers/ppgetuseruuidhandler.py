@@ -98,7 +98,7 @@ class PPGetUserUUIDHandler(BaseHandler):
 
     def _Task(self):
         super(PPGetUserUUIDHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _user_email = _request.get("user_email")
         _user_icon = _request.get("user_icon")
         _user_fullname = _request.get("user_fullname")

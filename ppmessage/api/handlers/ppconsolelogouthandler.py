@@ -24,7 +24,7 @@ class PPConsoleLogoutHandler(BaseHandler):
     
     def _Task(self):    
         super(PPConsoleLogoutHandler, self)._Task()
-        _input = json.loads(self.request.body)
+        _input = json.loads(self.request.body.decode("utf-8"))
         _user_uuid = _input.get("user_uuid")
         if _user_uuid == None:
             self.setErrorCode(API_ERR.NO_PARA)

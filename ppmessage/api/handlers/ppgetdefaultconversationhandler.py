@@ -91,7 +91,7 @@ class PPGetDefaultConversationHandler(BaseHandler):
         return _return
     
     def _get_app_welcome(self):
-        _body = json.loads(self.request.body)
+        _body = json.loads(self.request.body.decode("utf-8"))
         _language = get_config_language()
         if _language == None:
             _language = "zh_cn"

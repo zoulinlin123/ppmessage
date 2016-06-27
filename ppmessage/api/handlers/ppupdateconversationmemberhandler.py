@@ -78,7 +78,7 @@ class PPUpdateConversationMemberHandler(BaseHandler):
     
     def _Task(self):
         super(PPUpdateConversationMemberHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
 
         self._action = _request.get("action")
         self._app_uuid = _request.get("app_uuid")

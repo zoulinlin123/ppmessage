@@ -24,7 +24,7 @@ import json
 class PPConsoleGetRealTimeCustomerNumber(BaseHandler):
 
     def _get(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         
         if _app_uuid == None:

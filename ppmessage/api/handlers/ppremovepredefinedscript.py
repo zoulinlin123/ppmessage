@@ -17,7 +17,7 @@ import logging
 class PPRemovePredefinedScript(BaseHandler):
 
     def _remove(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _script_uuid = _request.get("script_uuid")
 
         if _script_uuid == None or len(_script_uuid) == 0:

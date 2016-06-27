@@ -60,7 +60,7 @@ class PPCreateOrgGroupHandler(BaseHandler):
         
     def _Task(self):
         super(PPCreateOrgGroupHandler, self)._Task()
-        _body = json.loads(self.request.body)
+        _body = json.loads(self.request.body.decode("utf-8"))
 
         _app_uuid = _body.get("app_uuid")
         _group_name = _body.get("group_name")

@@ -213,7 +213,7 @@ class PPPageHistoryMessageHandler(BaseHandler):
 
     def _Task(self):
         super(PPPageHistoryMessageHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         
         _conversation_uuid = _request.get("conversation_uuid")
         _page_offset = _request.get("page_offset")

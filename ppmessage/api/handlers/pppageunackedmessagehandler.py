@@ -49,7 +49,7 @@ class PPPageUnackedMessageHandler(BaseHandler):
     def _Task(self):
         super(PPPageUnackedMessageHandler, self)._Task()
 
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         _user_uuid = _request.get("user_uuid")
         _device_uuid = _request.get("device_uuid")

@@ -19,7 +19,7 @@ import logging
 class PPAddPredefinedScriptGroup(BaseHandler):
 
     def _add(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         _group_name = _request.get("group_name")
                 

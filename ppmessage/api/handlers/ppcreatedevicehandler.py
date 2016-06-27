@@ -111,7 +111,7 @@ class PPCreateDeviceHandler(BaseHandler):
         
     def _Task(self):
         super(PPCreateDeviceHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         if not self._prepare(_request):
             return
         self._create()

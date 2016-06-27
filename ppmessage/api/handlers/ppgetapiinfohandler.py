@@ -58,7 +58,7 @@ class PPGetApiInfoHandler(BaseHandler):
 
     def _Task(self):
         super(PPGetApiInfoHandler, self)._Task()
-        _user_uuid = json.loads(self.request.body).get("user_uuid")
+        _user_uuid = json.loads(self.request.body.decode("utf-8")).get("user_uuid")
         if _user_uuid == None:
             logging.error("no user_uuid provided")
             self.setErrorCode(API_ERR.NO_PARA)

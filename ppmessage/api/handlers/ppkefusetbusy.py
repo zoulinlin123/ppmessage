@@ -18,7 +18,7 @@ import logging
 class PPKefuSetBusy(BaseHandler):
 
     def _set(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
 
         _user_uuid = _request.get("user_uuid")
         if _user_uuid == None or len(_user_uuid) == 0:

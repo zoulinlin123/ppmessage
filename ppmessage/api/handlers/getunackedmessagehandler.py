@@ -37,7 +37,7 @@ class GetUnackedMessageHandler(BaseHandler):
     def _Task(self):
         super(GetUnackedMessageHandler, self)._Task()
 
-        _uuid = json.loads(self.request.body).get("uuid")
+        _uuid = json.loads(self.request.body.decode("utf-8")).get("uuid")
         if _uuid is None:
             self.setErrorCode(API_ERR.NO_PARA)
             return

@@ -85,6 +85,6 @@ class SetDeviceUserHandler(BaseHandler):
     
     def _Task(self):
         super(SetDeviceUserHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         self._post(_request)
         

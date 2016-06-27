@@ -264,7 +264,7 @@ class GetYVObjectDetailHandler(BaseHandler):
     
     def _Task(self):
         super(GetYVObjectDetailHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
 
         #logging.info("GETYVOBJECTDETAIL with " + str(_request))
         if "type" not in _request:

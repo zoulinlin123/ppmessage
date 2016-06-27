@@ -52,7 +52,7 @@ class ForwardMessageHandler(BaseHandler):
 
     def _Task(self):
         super(ForwardMessageHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
 
         logging.info("ForwardMessage with %s." % (str(_request)))
 

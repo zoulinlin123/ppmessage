@@ -53,7 +53,7 @@ class PPRemoveUserHandler(BaseHandler):
     
     def _Task(self):
         super(PPRemoveUserHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _user_uuid = _request.get("user_uuid")
         _user_password = _request.get("user_password")
         if _user_uuid == None or _user_password == None:

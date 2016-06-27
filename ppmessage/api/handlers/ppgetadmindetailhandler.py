@@ -66,7 +66,7 @@ class PPGetAdminDetailHandler(BaseHandler):
     
     def _Task(self):
         super(PPGetUserDetailHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _rdata = self.getReturnData()
         self._du(_request, _rdata)
         #logging.info("GETYVOBJECTDETAIL return " + str(_rdata))

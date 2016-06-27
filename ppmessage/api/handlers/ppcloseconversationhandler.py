@@ -52,7 +52,7 @@ class PPCloseConversationHandler(BaseHandler):
     
     def _Task(self):
         super(PPCloseConversationHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _conversation_uuid = _request.get("conversation_uuid")
         _user_uuid = _request.get("user_uuid")
         _app_uuid = _request.get("app_uuid")

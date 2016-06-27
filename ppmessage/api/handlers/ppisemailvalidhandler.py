@@ -31,7 +31,7 @@ class PPIsEmailValidHandler(BaseHandler):
 
     def _Task(self):
         super(PPIsEmailValidHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _user_email = _request.get("user_email")
         if _user_email == None:
             self.setErrorCode(API_ERR.NO_PARA)

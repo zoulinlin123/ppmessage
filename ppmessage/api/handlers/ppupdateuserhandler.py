@@ -22,7 +22,7 @@ import logging
 class PPUpdateUserHandler(BaseHandler):
     def _update(self):
         _redis = self.application.redis
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
 
         _app_uuid = _request.get("app_uuid")
         _user_uuid = _request.get("user_uuid")

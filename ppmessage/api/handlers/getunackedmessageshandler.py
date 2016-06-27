@@ -61,7 +61,7 @@ class GetUnackedMessagesHandler(BaseHandler):
     def _Task(self):
         super(GetUnackedMessagesHandler, self)._Task()
 
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _from_uuid = _request.get("from_uuid")
         _device_uuid = _request.get("device_uuid")
 

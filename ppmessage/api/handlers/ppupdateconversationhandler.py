@@ -51,7 +51,7 @@ class PPUpdateConversationHandler(BaseHandler):
     
     def _Task(self):
         super(PPUpdateConversationHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _conv_uuid = _request.get("conversation_uuid")
         _assigned_uuid = _request.get("assigned_uuid")
         

@@ -41,7 +41,7 @@ class GetMessageHistoryHandler(BaseHandler):
     """
     def _Task(self):
         super(GetMessageHistoryHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         
         _peer_uuid = _request.get("peer_uuid")
         _peer_type = _request.get("peer_type")

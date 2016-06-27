@@ -18,7 +18,7 @@ import logging
 class PPGetAllPredefinedScript(BaseHandler):
 
     def _get(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _app_uuid = _request.get("app_uuid")
         _key = PredefinedScript.__tablename__ + ".app_uuid." + _app_uuid
         _scripts = self.application.redis.smembers(_key)

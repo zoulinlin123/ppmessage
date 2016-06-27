@@ -64,7 +64,7 @@ class PPCreateAnonymousHandler(BaseHandler):
         response = yield http_client.fetch(http_request)
 
         logging.info(response.body)
-        _body = json.loads(response.body)
+        _body = json.loads(response.body.decode("utf-8"))
         
         if _body == None or _body.get("error_code") != 0:
             logging.error("cant get user name by ip: %s" % ip)
@@ -161,7 +161,7 @@ class PPCreateAnonymousHandler(BaseHandler):
 
     def _Task(self):
         super(PPCreateAnonymousHandler, self)._Task()
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
         _ppcom_trace_uuid = _request.get("ppcom_trace_uuid")
         if _ppcom_trace_uuid == None:
             logging.error("no ppcom trace id provided.")

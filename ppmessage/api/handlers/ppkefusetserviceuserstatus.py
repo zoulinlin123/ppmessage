@@ -18,7 +18,7 @@ import logging
 class PPKefuSetServiceUserStatus(BaseHandler):
 
     def _set(self):
-        _request = json.loads(self.request.body)
+        _request = json.loads(self.request.body.decode("utf-8"))
 
         _user_uuid = _request.get("user_uuid")
         _user_status = _request.get("user_status")
