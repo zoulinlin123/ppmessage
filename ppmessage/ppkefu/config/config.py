@@ -41,10 +41,12 @@ def config(_d):
 
 if __name__ == "__main__":
     import sys
-
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
-
+    try:
+        reload(sys)
+        sys.setdefaultencoding('utf-8')
+    except:
+        pass
+    
     from ppmessage.core.constant import API_LEVEL
     from ppmessage.core.constant import CONFIG_STATUS
     from ppmessage.core.utils.config import _get_config

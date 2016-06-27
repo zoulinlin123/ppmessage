@@ -63,7 +63,7 @@ class CacheDelegate():
             _request = self.redis.lpop(_key)
             if _request == None:
                 break
-            _request = json.loads(_request)
+            _request = json.loads(_request.decode("utf-8"))
             _type = _request.get("type")
             _data = _request.get("data")
             self._handler(_type, _data)

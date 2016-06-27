@@ -24,9 +24,13 @@ import tornado.httpserver
 tornado.options.define("port", default=PPCOM_PORT, help="", type=int)
 
 def _main():
-    import sys
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
+    try:
+        import sys
+        reload(sys)
+        sys.setdefaultencoding('utf-8')
+    except:
+        pass
+    
     tornado.options.parse_command_line()
 
     _app = PPComApp()

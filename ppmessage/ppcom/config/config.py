@@ -51,8 +51,12 @@ def _replace(_d):
         ws = "wss://"
 
     import sys
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
+    try:
+        reload(sys)
+        sys.setdefaultencoding('utf-8')
+    except:
+        import imp.reload
+        imp.reload(sys)
 
     with open(_template_min_js, "r") as _t:
         _str = _t.read()
