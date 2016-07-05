@@ -111,6 +111,7 @@ if [ $manual_python = 1 ];then
         wget https://bootstrap.pypa.io/ez_setup.py
         sudo /usr/local/bin/python2.7 ez_setup.py
         sudo /usr/local/bin/easy_install-2.7 pip
+        ln -s /usr/local/bin/pip /usr/bin/pip
         cd -
     fi
 else
