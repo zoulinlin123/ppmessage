@@ -56,46 +56,69 @@ download_geolite2
 #yum update
 
 # for debian
-yum install -y libjpeg62-turbo-dev
-
-# for ubuntu
-yum install -y libjpeg8-dev
-
 yum install -y \
+    libjpeg-turbo-devel \
+    epel-release \
     sudo \
-    apt-file \
-    apt-utils \
     autoconf \
     automake \
     gcc \
     git \
-    g++ \
-    gfortran \
-    libblas-dev \
-    liblapack-dev \
-    libatlas-base-dev \
-    libffi-dev \
-    libfdk-aac-dev \
-    libfreetype6-dev \
+    gcc-c++ \
+    libgfortran \
+    blas-devel \
+    lapack-devel \
+    atlas-devel \
+    libffi-devel \
+    freetype-devel \
     libmagic1 \
     libmp3lame-dev \
-    libncurses5-dev \
+    ncurses-devel \
     libopencore-amrwb-dev \
     libopencore-amrnb-dev \
-    libopus-dev \
-    libpng12-dev \
-    libpcre3 \
-    libpcre3-dev \
-    libssl-dev \
+    opus-devel \
+    libpng-devel \
+    pcre \
+    pcre-devel \
+    sslh \
     libtool \
     mercurial \
     openssl \
-    pkg-config \
-    python \
-    python-dev \
-    python-pip \
+    pkgconfig \    
     redis \
-    wget
+    wget 
+
+version=$(cat /etc/issue)
+[[ $version = CentOS* ]] && echo $version || echo "not CentOS, end" exit
+[[ $version = *' 6.'* ]] && manual_python=1 || manual_python=0
+if [ $manual_python = 1 ];then
+    pverion=`python -V 2>&1`
+
+    [[ $pverion = *' 2.7.'* ]] && python_installed=1 || python_installed=0
+    if [ $python_installed = 1 ];then
+        echo "python installed"
+    else
+        # install python2.7
+        cd /tmp
+        wget https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz
+        xz -d Python-2.7.12.tar.xz
+        tar -xvf Python-2.7.12.tar
+        cd Python-2.7.12
+        ./configure
+        make
+        make install
+        # install pip
+        wget https://bootstrap.pypa.io/ez_setup.py
+        sudo /usr/local/bin/python2.7 ez_setup.py
+        sudo /usr/local/bin/easy_install-2.7 pip
+        cd -
+    fi
+else
+    yum install -y \
+        python \
+        python-devel \
+        python-pip \
+fi   
 
 # some python modules need libmaxminddb, install it before run 'pip install ...'
 cd /tmp
@@ -106,8 +129,10 @@ cd libmaxminddb
 make && make install
 cd -
 
+
 # "pip install -i http://pypi.douban.com/simple xxx" might be faster
 pip install \
+    importlib \
     StringGenerator \
     axmlparserpy \
     beautifulsoup4 \
