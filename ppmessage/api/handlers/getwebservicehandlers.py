@@ -13,8 +13,6 @@ from .setdeviceinfohandler import SetDeviceInfoHandler
 
 from .getunackedmessageshandler import GetUnackedMessagesHandler
 from .getunackedmessagehandler import GetUnackedMessageHandler
-from .getappversionhandler import GetAppVersionHandler
-
 from .getmessagehistoryhandler import GetMessageHistoryHandler
 
 from .ppcreateanonymoushandler import PPCreateAnonymousHandler
@@ -75,11 +73,13 @@ from .pppagehistorymessagehandler import PPPageHistoryMessageHandler
 from .pppageonlineportaluserhandler import PPPageOnlinePortalUserHandler
 from .pppagedevicenavigationhandler import PPPageDeviceNavigationHandler
 
+from .pppageorggrouphandler import PPPageOrgGroupHandler
+from .pppageorggroupuserhandler import PPPageOrgGroupUserHandler
+
 from .ppkefuloginhandler import PPKefuLoginHandler
 from .ppkefulogouthandler import PPKefuLogoutHandler
 
 from .ppgetuserdetailhandler import PPGetUserDetailHandler
-from .ppgetadmindetailhandler import PPGetAdminDetailHandler
 
 from .ppconsolelogouthandler import PPConsoleLogoutHandler
 from .ppconsolesignuphandler import PPConsoleSignupHandler
@@ -143,9 +143,6 @@ def getWebServiceHandlers():
     handler_list.append((r"/GET_UNACKED_MESSAGE", GetUnackedMessageHandler))
 
     # get app version to check the lastest version for the app
-    handler_list.append((r"/GET_APP_VERSION", GetAppVersionHandler))
-
-    # get app version to check the lastest version for the app
     handler_list.append((r"/GET_MESSAGE_HISTORY", GetMessageHistoryHandler))
 
     # PPMESSAGE
@@ -207,11 +204,13 @@ def getWebServiceHandlers():
     handler_list.append((r"/PP_PAGE_ONLINE_PORTAL_USER", PPPageOnlinePortalUserHandler))
     handler_list.append((r"/PP_PAGE_DEVICE_NAVIGATION", PPPageDeviceNavigationHandler))
 
+    handler_list.append((r"/PP_PAGE_ORG_GROUP", PPPageOrgGroupHandler))
+    handler_list.append((r"/PP_PAGE_ORG_GROUP_USER", PPPageOrgGroupUserHandler))
+    
     handler_list.append((r"/PPKEFU_LOGIN", PPKefuLoginHandler))
     handler_list.append((r"/PPKEFU_LOGOUT", PPKefuLogoutHandler))
 
     handler_list.append((r"/PP_GET_USER_DETAIL", PPGetUserDetailHandler))
-    handler_list.append((r"/PP_GET_ADMIN_DETAIL", PPGetAdminDetailHandler))
 
     handler_list.append((r"/PPCONSOLE_LOGOUT", PPConsoleLogoutHandler))
     handler_list.append((r"/PPCONSOLE_SIGNUP", PPConsoleSignupHandler))

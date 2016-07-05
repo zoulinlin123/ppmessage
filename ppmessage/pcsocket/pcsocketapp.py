@@ -28,10 +28,8 @@ from ppmessage.core.constant import DIS_WHAT
 from ppmessage.core.constant import PP_WEB_SERVICE
 from ppmessage.core.constant import DATETIME_FORMAT
 
-from ppmessage.core.constant import TIMEOUT_WEBSOCKET_OFFLINE
-
-from ppmessage.core.main import AbstractWebService
 from ppmessage.core.singleton import singleton
+from ppmessage.core.main import AbstractWebService
 
 from ppmessage.core.utils.getipaddress import get_ip_address
 from ppmessage.core.utils.datetimestring import now_to_string
@@ -281,7 +279,8 @@ class PCSocketDelegate():
         _users = self.redis.smembers(_key)
         for _user_uuid in _users:
             if _user_uuid == _ws.user_uuid:
-		continue
+                continue
+            
             _users.add(_user_uuid)
             _listen_key = REDIS_TYPING_LISTEN_KEY + ".user_uuid." + _user_uuid
             self.redis.sadd(_listen_key, _v)

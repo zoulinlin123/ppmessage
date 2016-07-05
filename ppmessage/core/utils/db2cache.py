@@ -12,9 +12,6 @@ from .datetimeencoder import DateTimeEncoder
 
 from ppmessage.db.dbinstance import getDBSessionClass
 
-from ppmessage.db.models import APNSSetting
-from ppmessage.db.models import AppPackageInfo
-
 from ppmessage.db.models import AppInfo
 from ppmessage.db.models import AppUserData
 
@@ -22,18 +19,8 @@ from ppmessage.db.models import DeviceUser
 from ppmessage.db.models import DeviceInfo
 
 from ppmessage.db.models import OrgGroup
-from ppmessage.db.models import OrgSubGroupData
-from ppmessage.db.models import OrgUserGroupData
-
-from ppmessage.db.models import AppGroup
-from ppmessage.db.models import AppUserGroupData
-
-from ppmessage.db.models import AppGroupMenu
-from ppmessage.db.models import AppMessageAction
-from ppmessage.db.models import AppGroupDefaultRule
-
-from ppmessage.db.models import DiscussionGroup
-from ppmessage.db.models import DiscussionUserGroupData
+from ppmessage.db.models import OrgGroupUserData
+from ppmessage.db.models import OrgGroupSubGroupData
 
 from ppmessage.db.models import MessagePushTask
 from ppmessage.db.models import MessagePush
@@ -92,14 +79,11 @@ def load(_redis):
         MessagePushTask,
         MessagePush,
         
-        APNSSetting,
-        AppPackageInfo,
-        
         PCSocketInfo,
         PCSocketDeviceData,
 
         OrgGroup,
-        OrgUserGroupData,        
+        OrgGroupUserData,        
 
         ApiInfo,
         ApiTokenData,
