@@ -40,8 +40,9 @@ class UploadFileHandler(RequestHandler):
     @asynchronous
     def post(self, id=None):
         
-        _redis = self.application.redis        
-        logging.info(self.request.body)
+        _redis = self.application.redis
+        logging.info("post file")
+        #logging.info(self.request.body)
 
         if self.content_length > UPLOAD_MAX_BYTE:
             logging.error("upload file over limit: %d > %d" % self.content_length, UPLOAD_MAX_BYTE)
