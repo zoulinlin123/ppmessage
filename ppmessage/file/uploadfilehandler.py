@@ -26,8 +26,8 @@ class UploadFileHandler(RequestHandler):
         self.write('Hello Upload')
 
     def post(self):
-
-        logging.info(self.request.body)
+        logging.info("upload file")
+        #logging.info(self.request.body)
         _generic_store = get_config_server_generic_store()
         if _generic_store == None:
             logging.error("Generic store not configed")
@@ -103,5 +103,5 @@ class UploadFileHandler(RequestHandler):
         #self.set_header("Content-Type", "application/json")
         self.set_header("Access-Control-Allow-Origin", "*")
         self.write(json.dumps(_r))
-        logging.info(str(_r))
+        #logging.info(str(_r))
         return
